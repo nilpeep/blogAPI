@@ -16,6 +16,8 @@ app.all('/',(req,res)=>{
     res.send('WELCOME BLOG API PROJECT')
 })
 
+app.use('/blog',require('./src/routes/blog.route'))
+
 
 app.use(require('./src/errorHandler')) // aşağıda kalsın
 

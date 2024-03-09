@@ -22,6 +22,11 @@ const blogPostSchema = new mongoose.Schema(
     }
 )
 
+module.exports={
+    BlogPost:  mongoose.model('BlogPost',blogPostSchema)
+
+}
+
 // const nameSchema=new  mongoose.Schema(
 //     {
 //     // type: Alanın veri türünü belirtir. Örneğin, String, Number, Date, Array, vb.
