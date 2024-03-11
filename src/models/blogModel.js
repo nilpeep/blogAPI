@@ -2,6 +2,19 @@
 
 const mongoose=require('mongoose')
 
+const blogCategorySchema = new mongoose.Schema({
+    name:{
+        type: String,
+        trim:true,
+        required:true
+    }
+},{
+    // settings
+
+    collection:'blogPost',
+    timestamps: true // createdAt and updated at automatically managing by mongoose
+})
+
 const blogPostSchema = new mongoose.Schema(
     {
         title:{
@@ -23,7 +36,8 @@ const blogPostSchema = new mongoose.Schema(
 )
 
 module.exports={
-    BlogPost:  mongoose.model('BlogPost',blogPostSchema)
+    BlogCategory: mongoose.model('BlogCategory', blogCategorySchema),    
+    BlogPost: mongoose.model('BlogPost',blogPostSchema)
 
 }
 

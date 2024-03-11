@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 /* DB connection  */
-require('./src/dbConnection')
+require('./src/configs/dbConnection')
 
 app.use(express.json()) // yukarıda  kalsın
 
@@ -19,6 +19,6 @@ app.all('/',(req,res)=>{
 app.use('/blog',require('./src/routes/blog.route'))
 
 
-app.use(require('./src/errorHandler')) // aşağıda kalsın
+app.use(require('./src/middlewares/errorHandler')) // aşağıda kalsın
 
 app.listen(PORT,()=> console.log(` Server Running on http://${HOST}:${PORT}`))
