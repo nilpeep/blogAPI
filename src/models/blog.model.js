@@ -17,6 +17,10 @@ const blogCategorySchema = new mongoose.Schema({
 
 const blogPostSchema = new mongoose.Schema(
     {
+        blogCategoryId:{
+            type : mongoose.Schema.Types.ObjectId, // ForeignKey, RelationalID
+            refs:"BlogCategory",  //
+        },
         title:{
             type:String,
             trim:true,
@@ -27,6 +31,10 @@ const blogPostSchema = new mongoose.Schema(
             type: String,
             trim: true,
             required: true 
+        },
+        published:{
+            type:Boolean,   
+            default:true
         }
     },
     {

@@ -1,19 +1,31 @@
 "use strict"
+/* ====================================================== */
+/*                     BLOG API Routes               */
+/* ====================================================== */
+const router = require("express").Router()
 
-// BLOG API routes
+const { BlogCategory, BlogPost } = require("../controllers/blog.controller")
 
-const router = require('express').Router()
+// BlogCategory:
+router.route('/categories')
+    .get(BlogCategory.list)
+    .post(BlogCategory.create)
+router.route('/categories/:categoryId')
+    .get(BlogCategory.read)
+    .put(BlogCategory.update) // put patch aynı
+    .patch(BlogCategory.update)
+    .delete(BlogCategory.delete)
 
-const { BlockList } = require('net')
-const {BlogPost} = require('../controllers/blog.controller')
 
+// BlogPost:
 router.route('/posts')
-.get(BlogPost.list)
-.post(BlogPost.create)
-
+    .get(BlogPost.list)
+    .post(BlogPost.create)
 router.route('/posts/:postId')
-.get(BlogPost.read)
-.put(BlogPost.update)
-.delete(BlogPost.delete)
+    .get(BlogPost.read)
+    .put(BlogPost.update) // put patch aynı
+    .patch(BlogPost.update)
+    .delete(BlogPost.delete)
+
 
 module.exports = router
