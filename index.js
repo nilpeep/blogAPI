@@ -4,6 +4,29 @@ const app = express()
 /* DB connection  */
 require('./src/configs/dbConnection')
 
+
+/* ------------------------------------------------------- */
+// SessionCookies:
+// http://expressjs.com/en/resources/middleware/cookie-session.html
+// https://www.npmjs.com/package/cookie-session
+//* $ npm i cookie-session
+
+const session = require('cookie-session')
+app.use(session({
+    secret:process.env.SECRET_KEY, // this is a required option if you are using encrypted sessions
+    // name: 'mySession', // cookie name dictates the key name used in the cookies jar
+    keys: ['key1', 'key2'], // an array of any number of keys to use for encryption and signing. 
+    // // maxAge:1000 * 60 * 60 * 24 * 3, // how long (in ms) until the session will expire
+    // secure: false, // only set this to true on production if your app is behind HTTPS
+    // resave: false, // don't automatically save session changes to the client
+    // saveUninitialized: true, //  don't automatically create new sessions
+}))
+
+app.all('/', (req,res)=>{
+    res.send()
+})
+
+
 app.use(express.json()) // yukarıda  kalsın
 
 
