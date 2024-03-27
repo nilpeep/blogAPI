@@ -15,7 +15,7 @@ router.route('/categories/:categoryId')
     .put(BlogCategory.update) // put patch aynı
     .patch(BlogCategory.update)
     .delete(BlogCategory.delete)
-
+ 
 
 // BlogPost:
 router.route('/posts')
