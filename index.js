@@ -43,9 +43,12 @@ require('dotenv').config()
 const PORT=process.env.PORT
 const HOST=process.env.HOST
 
+app.use(require('./src/middlewares/findSearchSortPage'))
+
 app.all('/',(req,res)=>{
     res.send('WELCOME BLOG API PROJECT')
 })
+
 
 app.use('/user', require(`./src/routes/user.router`))
 

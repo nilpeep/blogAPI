@@ -18,9 +18,10 @@ const { BlogCategory, BlogPost } = require("../models/blog.model")
 module.exports.BlogCategory = {
 
     list: async (req, res) => {
-        const data = await BlogCategory.find()
+        const data = await res.getModelList(BlogCategory)
         res.status(200).send({
             error: false,
+            details: await res.getModelListDetails(BlogCategory),
             data: data
         })
     },
@@ -33,7 +34,7 @@ module.exports.BlogCategory = {
         })
     },
     read: async (req, res) => {
-        const data = await BlogCategory.find({ _id: req.params.categoryId })
+        const data = await BlogCategory.findOne({ _id: req.params.categoryId })
         res.status(202).send({
             error: false,
             data: data
