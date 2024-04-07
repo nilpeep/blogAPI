@@ -28,11 +28,7 @@ const UserSchema = new mongoose.Schema({
         //     },
         //     'Email type is incorrect'
         // ],
-        validate: [
-            (email) => (email.includes('@') && email.includes('.')),
-            'Email type is incorrect'
-        ]
-
+      
     },
 
     password: {
