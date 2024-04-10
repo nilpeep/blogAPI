@@ -64,31 +64,47 @@ module.exports = {
             // const user = await User.findOne({ email: email })
             const user = await User.findOne({ email })
 
-            if (user && user.password == passwordEncrypt(password)) {
-
-                /* COOIKES */
-                // req.session = {
-                //     email: user.email,
-                //     password: user.password
-                // }
-                req.session.email = user.email
-                req.session.password = user.password
-                /* COOIKES */
-
-                res.status(200).send({
-                    error: false,
-                    message: 'Login OK',
-                    user
-                })
-
+            if (email && password) {
+            
+                // const user = await User.findOne({ email: email })
+                const user = await User.findOne({ email })
+    
+    
+                if (user && user.password == passwordEncrypt(password)) {
+    
+                    /* SESSION */
+                    // req.session = {
+                    //     email: user.email,
+                    //     password: user.password
+                    // }
+                    // req.session.email = user.email
+                    req.session.id = user.id
+                    req.session.password = user.password
+                    /* SESSION */
+    
+                    /* COOKIE */
+                    if (req.body?.remindMe) {
+                        req.session.remindMe = req.body.remindMe
+                        // SET maxAge:
+                        req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3 // 3 days
+                    }
+                    /* COOKIE */
+    
+                    res.status(200).send({
+                        error: false,
+                        message: 'Login OK',
+                        user
+                    })
+    
+                } else {
+                    res.errorStatusCode = 401
+                    throw new Error('Login parameters are not true.')
+                }
             } else {
                 res.errorStatusCode = 401
-                throw new Error('Login parameters are not true.')
+                throw new Error('Email and password are required.')
             }
-        } else {
-            res.errorStatusCode = 401
-            throw new Error('Email and password are required.')
-        }
+        }    
     },
     logout: async (req,res)=>{
 
