@@ -11,7 +11,7 @@ const blogCategorySchema = new mongoose.Schema({
 },{
     // settings
 
-    collection:'blogPost',
+    collection:'blogCategory',
     timestamps: true // createdAt and updated at automatically managing by mongoose
 })
 

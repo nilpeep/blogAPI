@@ -55,6 +55,10 @@ module.exports = {
 
         const { email, password } = req.body
 
+        console.log(email, password)
+
+        console.log("hello")
+
         if (email && password) {
             
             // const user = await User.findOne({ email: email })
