@@ -1,6 +1,6 @@
 "use strict"
 
-const mongoose=require('mongoose')
+const {mongoose}=require('../configs/dbConnection')
 
 const blogCategorySchema = new mongoose.Schema({
     name:{

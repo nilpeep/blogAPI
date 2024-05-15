@@ -1,9 +1,6 @@
 "use strict";
-/* -------------------------------------------------------
-    EXPRESSJS - BLOG API
-------------------------------------------------------- */
 
-const mongoose = require('mongoose')
+const {mongoose} = require('../configs/dbConnection')
 
 const passwordEncrypt = require('../helpers/passwordEncrypt')
 
@@ -11,36 +8,45 @@ const passwordEncrypt = require('../helpers/passwordEncrypt')
 // Schema:
 const UserSchema = new mongoose.Schema({
 
-    email: {
+    username: {
         type: String,
         trim: true,
+        required: true,
         unique: true,
-        // unique: [true, 'Email must be unique.'],
-        // required: true,
-        required: [true, 'Email must be required.'],
-        // validate: (email) => { return true },
-        // validate: [
-        //     (email) => {
-        //         if (email.includes('@') && email.includes('.')) {
-        //             return true
-        //         }
-        //         return false
-        //     },
-        //     'Email type is incorrect'
-        // ],
-      
+        index: true
     },
 
     password: {
         type: String,
         trim: true,
-        required: true,
-        set: (password) => passwordEncrypt(password) 
+        required: true
     },
 
-    firstName: String,
+    email: {
+        type: String,
+        trim: true,
+        required: true,
+        unique: true,
+        index: true,
+        // validate: ... // validasyon işlemini pre(save) yapıyor.
+    },
 
-    lastName: String,
+    firstName: {
+        type: String,
+        trim: true,
+        required: true
+    },
+
+    lastName: {
+        type: String,
+        trim: true,
+        required: true
+    },
+
+    isActive: {
+        type: Boolean,
+        default: true,
+    }
 
 }, {
     collection: 'user',

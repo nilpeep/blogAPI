@@ -17,7 +17,7 @@ module.exports = {
 
             const user = await User.findOne({ $or: [{ username }, { email }] })
 
-            if (user && user.password == passwordEncrypt(password)) {
+            if (user && user.password == password) {
 
                 if (user.isActive) {
 
@@ -57,20 +57,6 @@ module.exports = {
     },
 
     refresh: async (req, res) => {
-        /*
-            #swagger.tags = ['Authentication']
-            #swagger.summary = 'JWT: Refresh'
-            #swagger.description = 'Refresh access-token by refresh-token.'
-            #swagger.parameters['body'] = {
-                in: 'body',
-                required: true,
-                schema: {
-                    bearer: {
-                        refresh: '___refreshToken___'
-                    }
-                }
-            }
-        */
 
         const refreshToken = req.body?.bearer?.refreshToken
 

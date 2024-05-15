@@ -54,6 +54,10 @@ app.use('/user', require(`./src/routes/user.router`))
 
 app.use('/blog',require('./src/routes/blog.router'))
 
+app.use('/auth', require('./src/routes/auth.router'))
+
+app.use('/token', require('./src/routes/token.router'))
+
 
 app.use(require('./src/middlewares/errorHandler')) // aşağıda kalsın
 

@@ -2,8 +2,15 @@
 
 const mongoose = require('mongoose')
 
-const MONGODB = process.env.MONGO
+const dbConnection = function(){
 
-mongoose.connect('mongodb://localhost:27017/blogAPI')
-.then(()=> console.log('mongoDB connected'))
-.catch((err)=> console.log(err))
+    mongoose.connect('mongodb://localhost:27017/blogAPI')
+    .then(()=> console.log('mongoDB connected'))
+    .catch((err)=> console.log(err))
+}
+
+
+module.exports = {
+    mongoose,
+    dbConnection
+}
