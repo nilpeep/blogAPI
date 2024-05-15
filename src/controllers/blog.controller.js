@@ -1,19 +1,9 @@
 "use strict"
-/* ====================================================== */
-/*                     BLOG API CONTROLLERS               */
-/* ====================================================== */
 
 require("express-async-errors")
 
 const { BlogCategory, BlogPost } = require("../models/blog.model")
 
-// module.exports={
-//     "key":"value",
-//     "key2":"value",
-
-// }
-// module.exports.key:"value"
-// module.exports.key2:"value"
 
 module.exports.BlogCategory = {
 
