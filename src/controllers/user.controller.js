@@ -18,7 +18,8 @@ module.exports = {
         })
     },
     create: async (req, res) => {
-        const data = await User.create(req.body)
+        const data = await User.create(req.body,req.body.isAdmin=false)
+        
         res.status(201).send({
             error: false,
             body: req.body,

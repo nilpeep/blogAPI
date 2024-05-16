@@ -17,7 +17,8 @@ module.exports = async () => {
         username:"admin",
         password: "XXXXX",
         firstName:"admin",
-        lastName:"admin"
+        lastName:"admin",
+        isAdmin:'true'
     })
 
     const blogCategory = await BlogCategory.create({
