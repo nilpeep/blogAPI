@@ -13,9 +13,10 @@ module.exports = {
     list: async (req, res) => {
         const customFilters = req.user?.isAdmin ? { _id: req.params.id } : { _id: req.user._id }
 
-        const data = await User.getModelList(User, customFilters)
+        const data = await res.getModelList(User)
         res.status(200).send({
             error: false,
+            details: await res.getModelList(User),
             data: data
         })
     },
