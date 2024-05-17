@@ -11,7 +11,7 @@ const passwordEncrypt = require('../helpers/passwordEncrypt')
 module.exports = {
 
     list: async (req, res) => {
-        const customFilters = req.user?.isAdmin ? { _id: req.params.id } : { _id: req.user._id }
+        // const customFilters = req.user?.isAdmin ? { _id: req.params.id } : { _id: req.user._id }
 
         const data = await res.getModelList(User)
         res.status(200).send({
